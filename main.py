@@ -75,21 +75,31 @@ class Cell:
             p2 = Point(self.x1, self.y2)
             l = Line(p1,p2)
             self.win.draw_line(l, "black")
+            time.sleep(0.0005)
+            self.win.redraw()
+            
         if self.right_wall:
             p1 = Point(self.x2, self.y1)
             p2 = Point(self.x2, self.y2)
             l = Line(p1,p2)
             self.win.draw_line(l, "black")
+            time.sleep(0.0005)
+            self.win.redraw()
         if self.top_wall:
             p1 = Point(self.x1, self.y1)
             p2 = Point(self.x2, self.y1)
             l = Line(p1, p2)
             self.win.draw_line(l, "black")
+            time.sleep(0.0005)
+            self.win.redraw()
+            
         if self.bottom_wall:
             p1 = Point(self.x1, self.y2)
             p2 = Point(self.x2, self.y2)
             l = Line(p1, p2)
             self.win.draw_line(l, "black")
+            time.sleep(0.0005)
+            self.win.redraw()
         
     def draw_move(self, to_cell, undo=False): #middle of cell to middle of another cell
         if undo == True:
@@ -140,7 +150,11 @@ class Maze():
     
     def draw_cells(self):
         for cells in self.cells:
+            self.win.redraw()
             cells.draw()
+            
+                
+    
     
         
         
@@ -153,11 +167,12 @@ def main():
     maze = Maze(10,10,10,10,50,50,win)
     
     
+    
     maze.draw_cells()
     
-    
-    
     win.wait_for_close()
+    
+    
     
     
 
